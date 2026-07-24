@@ -1,0 +1,22 @@
+# The Clearing House (RTP)
+
+> The Clearing House (TCH) is a U.S. banking association and payments company owned by the largest commercial banks. It operates CHIPS (large-value wire clearing), the EPN automated clearing house (ACH), and the RTP network — the private-sector real-time payments rail launched in 2017. RTP is a 24/7/365 instant credit-push scheme built on ISO 20022, supporting immediate final-settlement transfers up to $10 million, plus Request for Payment (RfP), remittance data, and UID directory addressing. TCH's API posture is documentation- and rulebook-first: it does not publish an open, self-serve public REST API or a downloadable OpenAPI/Swagger specification. Real-time HTTP/JSON RTP APIs are surfaced to businesses by participating financial institutions and registered technology providers that connect to the RTP network on their behalf.
+
+## APIs
+
+- [RTP Network (ISO 20022 Messaging)](https://www.theclearinghouse.org/payment-systems/rtp/technical-documentation): The RTP real-time payments scheme, defined by published ISO 20022 message specifications (pacs.008 Credit Transfer, pacs.002 Message Status Report, pain.013/pain.014 Request for Payment, camt.026/camt.028 Request for Information, camt.056/camt.029 Request for Return of Funds, camt.035 Payment Acknowledgement, remt.001 Stand-Alone Remittance Advice) plus the Business Application Header. Access is via participating financial institutions and registered technology providers; no downloadable OpenAPI is published by TCH.
+
+## Docs
+
+- [RTP Technical Documentation](https://www.theclearinghouse.org/payment-systems/rtp/technical-documentation): ISO 20022 message specifications (pacs, pain, camt, remt) as PDFs.
+- [RTP Document Library](https://www.theclearinghouse.org/payment-systems/rtp/document-library): Rulebooks, playbooks, and message specification reference.
+- [RTP Network Operating Rules](https://www.theclearinghouse.org/payment-systems/rtp/rtp-network-operating-rules): The RTP network operating rules.
+- [Newsroom](https://www.theclearinghouse.org/newsroom): Announcements and updates.
+
+## Standards
+
+- ISO 20022: The financial messaging standard underlying every RTP message (pacs / pain / camt / remt).
+
+## Notes
+
+- No open self-serve REST API, OpenAPI/Swagger spec, SDK, CLI, MCP server, OAuth surface, or webhook/AsyncAPI document is published by The Clearing House. Integration is intermediated through participating financial institutions and registered technology providers.

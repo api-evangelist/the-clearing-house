@@ -33,7 +33,7 @@ tags:
 - Request for Payment
 created: '2026-07-24'
 modified: '2026-07-24'
-specificationVersion: '0.19'
+specificationVersion: '0.21'
 apis:
 - aid: the-clearing-house:rtp-network
   name: RTP Network (ISO 20022 Messaging)
@@ -74,6 +74,12 @@ common:
   url: https://www.theclearinghouse.org/terms-of-use
 - type: PrivacyPolicy
   url: https://www.theclearinghouse.org/privacy-policy
+- type: DomainSecurity
+  url: security/the-clearing-house-domain-security.yml
+- type: Conformance
+  url: conformance/the-clearing-house-conformance.yml
+- type: LLMsTxt
+  url: llms/the-clearing-house-llms.txt
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com

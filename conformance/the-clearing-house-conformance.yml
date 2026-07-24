@@ -1,0 +1,31 @@
+generated: '2026-07-24'
+method: searched
+source: https://www.theclearinghouse.org/payment-systems/rtp/technical-documentation
+notes: >-
+  The RTP network is defined by published ISO 20022 message specifications
+  rather than an OpenAPI-described REST API, so conformance is asserted against
+  the messaging and payments standards TCH publishes, not against OpenAPI-derived
+  securitySchemes. No open OAuth2/OIDC, FAPI, SCIM, OData, or JSON:API surface is
+  published by TCH itself; those are implemented by participating financial
+  institutions and technology providers.
+standards:
+- id: iso20022
+  conforms: true
+  evidence: >-
+    RTP messages are published as ISO 20022 specifications: pacs.008 (Credit
+    Transfer), pacs.002 (Message Status Report), pain.013/pain.014 (Request for
+    Payment), camt.026/camt.028 (Request for Information), camt.056/camt.029
+    (Request for Return of Funds), camt.035 (Payment Acknowledgement), remt.001
+    (Stand-Alone Remittance Advice), plus the Business Application Header (BAH).
+- id: iso20022-bah
+  conforms: true
+  evidence: RTP wraps every message in the ISO 20022 Business Application Header (head.001).
+- id: fapi
+  conforms: false
+  evidence: No FAPI security profile published by TCH; access is intermediated by FIs/tech providers.
+- id: oauth2
+  conforms: false
+  evidence: TCH publishes no open OAuth2 authorization surface; no OpenAPI securitySchemes.
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: No REST/JSON error surface published; errors are ISO 20022 reject/return messages (pacs.002, camt.029).
