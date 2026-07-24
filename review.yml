@@ -1,0 +1,127 @@
+aid: the-clearing-house
+name: The Clearing House (RTP)
+review:
+  question: >-
+    Does The Clearing House publish a public, self-serve developer portal and a
+    downloadable OpenAPI/Swagger specification for its RTP real-time payments
+    network?
+  answer: false
+  date: '2026-07-24'
+  reviewer: API Evangelist
+findings:
+  summary: >-
+    The Clearing House (TCH) is the private-sector operator of the U.S. RTP
+    real-time payments network (launched 2017), alongside its CHIPS wire and EPN
+    ACH systems. Its public API posture is documentation- and rulebook-first,
+    which is typical for a domestic payment rail / scheme operator rather than a
+    self-serve PSP. There is NO dedicated developer portal: developer.,
+    docs., and api.theclearinghouse.org do not resolve (curl returns 000), and
+    /developers, /api, /docs, and /.well-known/openid-configuration all redirect
+    to a soft 404 (https://www.theclearinghouse.org/404?...). No downloadable
+    OpenAPI or Swagger specification is published anywhere on the site. Instead,
+    RTP is defined by ISO 20022 message specifications distributed as PDF
+    documents on the RTP Technical Documentation page and Document Library:
+    Business Application Header (BAH), Credit Transfer (pacs.008), Message Status
+    Report (pacs.002), Request for Payment (pain.013/pain.014), Request for
+    Information (camt.026/camt.028), Request for Return of Funds
+    (camt.056/camt.029), Payment Acknowledgement (camt.035), and Stand-Alone
+    Remittance Advice (remt.001). TCH also publishes the RTP network operating
+    rules, playbooks, a participant/routing directory, and a registered
+    technology-provider program. The actual real-time HTTP/JSON RTP APIs
+    consumed by businesses are exposed by participating financial institutions
+    (for example U.S. Bank's RTP API product suite) and technology providers
+    (for example TabaPay) that connect to the network on their behalf — not by
+    TCH directly. Home market is the United States.
+  homeMarket: United States
+  tier: rails-scheme
+  railType:
+    settlement: real-time
+    availability: 24/7/365
+    model: credit-push instant payments with final settlement
+    transactionLimit: $10,000,000 per transaction
+    messaging: ISO 20022
+    addressingService: UID Lookup (participant/routing directory)
+    requestForPayment: true
+    launched: 2017
+  developerPortal:
+    url: ''
+    confirmed: false
+    note: >-
+      No self-serve developer portal exists. The closest public developer
+      surface is the RTP Technical Documentation page (HTTP 200), which links to
+      PDF ISO 20022 message specifications, not an interactive API console.
+  downloadableSpecs:
+    openapi: false
+    count: 0
+    note: No OpenAPI/Swagger specification is published by TCH.
+  authModel:
+    scheme: none-public
+    note: >-
+      TCH does not expose a public authenticated API. Connectivity to the RTP
+      network is established through participation agreements, direct/indirect
+      participant connections, and registered technology providers; auth is
+      handled at the participating-FI layer, not by an open TCH developer
+      credential.
+  webhooksEvents:
+    published: false
+    note: >-
+      No public webhook or AsyncAPI event catalog. RTP message flows (pacs.002
+      status reports, camt acknowledgements) are network messages defined in the
+      ISO 20022 specs, not a public webhook product.
+  postman:
+    published: false
+  graphql:
+    published: false
+  transports:
+  - protocol: ISO 20022 messaging
+    scheme: network
+    documented: true
+    note: >-
+      RTP message set defined in published ISO 20022 specifications (pacs, pain,
+      camt, remt) plus the Business Application Header; PDF specs only.
+  - protocol: REST
+    scheme: https
+    documented: false
+    note: >-
+      No first-party public REST API is documented by TCH. HTTP/JSON RTP APIs
+      exist only at the participating-FI and technology-provider layer.
+sources:
+- url: https://www.theclearinghouse.org/payment-systems/rtp
+  type: Documentation
+  httpStatus: 200
+  note: RTP network overview — instant, 24/7/365, ISO 20022, $10M limit, 1,280+ participants.
+- url: https://www.theclearinghouse.org/payment-systems/rtp/technical-documentation
+  type: Documentation
+  httpStatus: 200
+  note: ISO 20022 message specifications published as downloadable PDFs; no OpenAPI.
+- url: https://www.theclearinghouse.org/payment-systems/rtp/document-library
+  type: APIReference
+  httpStatus: 200
+  note: RTP playbooks, rules, and technical specifications document library.
+- url: https://www.theclearinghouse.org/payment-systems/rtp/rtp-network-operating-rules
+  type: Documentation
+  httpStatus: 200
+  note: RTP network operating rules.
+- url: https://developer.theclearinghouse.org
+  type: DeveloperPortal
+  httpStatus: 000
+  note: Does not resolve — no developer subdomain.
+- url: https://www.theclearinghouse.org/developers
+  type: DeveloperPortal
+  httpStatus: 200
+  note: Soft 404 — redirects to https://www.theclearinghouse.org/404?item=%2fdevelopers
+- url: https://www.theclearinghouse.org/.well-known/openid-configuration
+  type: Authentication
+  httpStatus: 200
+  note: Soft 404 — no OIDC/OAuth discovery document.
+- url: https://github.com/theclearinghouse
+  type: GitHubOrganization
+  httpStatus: 404
+  note: No public GitHub organization found.
+actions:
+  status: built-stub
+  reason: >-
+    Honest identity + docs-pointer record for a documentation/rulebook-first
+    U.S. real-time payments scheme operator. No public self-serve API, no
+    developer portal, and no downloadable OpenAPI to harvest; the openapi/
+    directory is intentionally empty.
