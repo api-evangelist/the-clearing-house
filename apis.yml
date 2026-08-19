@@ -44,7 +44,7 @@ tags:
 - Request for Payment
 created: '2026-07-24'
 modified: '2026-07-24'
-specificationVersion: '0.21'
+specificationVersion: '0.23'
 apis:
 - aid: the-clearing-house:rtp-network
   name: RTP Network (ISO 20022 Messaging)
